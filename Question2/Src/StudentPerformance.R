@@ -111,6 +111,15 @@ ggplot(StudentsPerformance, mapping=aes(x = race_ethnicity_parental, fill=level_
        title = "Level of education by Race group")+
   theme_bw()
 
+StudentsPerformance$mean_score = round((StudentsPerformance$math_score + StudentsPerformance$writing_score+StudentsPerformance$reading_score)/3,1)
+
+ggplot(StudentsPerformance, aes(x=lunch, y =mean_score, fill = test_preparation_course))+
+  geom_col()+
+  labs(title = "Average scores by lunch and test prep",
+       x = "lunch",
+       y = "mean_score",
+       fill = "test_preparation_course")
+  
 ggplot(StudentsPerformance, aes(x = gender, fill = lunch)) + 
   geom_bar() + 
   labs(x = "gender", y = "lunch", fill = "lunch")
